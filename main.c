@@ -3,6 +3,15 @@
 #include "stdio.h"
 #include "stdbool.h"
 #include "math.h"
+#include "board.h"
+
+#define WIDTH 800
+#define HEIGHT 600
+#define CELLSIZE 2
+
+board* next = NULL;
+board* current = NULL;
+
 
 int main(int argc, char* argv[]) {
 	
@@ -10,7 +19,7 @@ int main(int argc, char* argv[]) {
 
 	SDL_Window* window = SDL_CreateWindow("Game of Life",
 		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-		800, 600,
+		WIDTH, HEIGHT,
 		SDL_WINDOW_SHOWN);
 
 	SDL_Event event;
