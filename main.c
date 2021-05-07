@@ -4,6 +4,7 @@
 #include "stdbool.h"
 #include "math.h"
 #include "board.h"
+#include "SDL_Function.h"
 
 #define WIDTH 800
 #define HEIGHT 600
@@ -21,6 +22,11 @@ int main(int argc, char* argv[]) {
 		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 		WIDTH, HEIGHT,
 		SDL_WINDOW_SHOWN);
+
+	SDL_Renderer* rend = SDL_CreateRender(window, -1, SDL_RENDERER_ACCELERATED);
+	SDL_Surface* surface = NULL;
+	
+	
 
 	SDL_Event event;
 	bool quit = false;

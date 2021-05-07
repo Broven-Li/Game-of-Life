@@ -6,6 +6,7 @@
 #include "string.h"
 #include "board.h"
 #include "main.c"
+#include "SDL_Function.h"
 
 board* createBoard(int w, int h) {
     if (w <= 0 || h <= 0) {  //if widght or height is negative, return NULL
@@ -81,6 +82,10 @@ void generation(board* current, board* next) {
 void init() {
     int box_width  = WIDTH / CELLSIZE;
     int box_height = HEIGHT / CELLSIZE;
+
+    SDL_SetRenderDrawColor(rend, 255, 255, 255, 255);
+    SDL_RenderClear(rend);
+    SDL_RenderPresent(rend);
 
     //    //Blinker
     //    (current->box)[10+1*box_width] = 1;
@@ -159,4 +164,7 @@ void init() {
 }
 
 void shutdown();
-void display();
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+    glLoadIdentity();
+}
