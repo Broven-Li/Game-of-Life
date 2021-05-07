@@ -4,43 +4,60 @@
 #include "stdbool.h"
 #include "math.h"
 #include "board.h"
-#include "SDL_Function.h"
+
 
 #define WIDTH 800
 #define HEIGHT 600
 #define CELLSIZE 2
 
-board* next = NULL;
-board* current = NULL;
-
-
 int main(int argc, char* argv[]) {
-	
-	SDL_Init(SDL_INIT_VIDEO);
 
-	SDL_Window* window = SDL_CreateWindow("Game of Life",
-		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-		WIDTH, HEIGHT,
-		SDL_WINDOW_SHOWN);
-
-	SDL_Renderer* rend = SDL_CreateRender(window, -1, SDL_RENDERER_ACCELERATED);
-	SDL_Surface* surface = NULL;
-	
-	
+	Init();
 
 	SDL_Event event;
 	bool quit = false;
+	int start = 1;
 
 	while (quit == false) {
 		while (SDL_PollEvent(&event)) {
 			if (event.type == SDL_QUIT) {
 				quit = true;
 			}
-			//else if 
+			else if (event.type == SDL_KEYDOWN) {
+				if (event.key.keysym.sym == SDLK_ESCAPE) {
+					quit = true;
+				}
+				else if (event.key.keysym.sym == SDLK_SPACE) {
+					if (!start) {
+						start = 1;
+					}
+					else {
+						start = 0;
+					}
+				}
+			}
+			else if (event.type == SDL_MOUSEBUTTONDOWN) {
+				if (event.button.button == SDL_BUTTON_LEFT) {
+
+				}
+				if (event.button.button == SDL_BUTTON_RIGHT) {
+
+
+				}
+			}
+
+			if (start) {
+				newTime = SDL_GetTicks();
+				deltaTime = (double)(newTime - lastTime) / 1000;
+				if (deltaTime >= DTIME) {
+					generation(current, next);
+					lastTime = newTime;
+				}
+				display();
+			}
+			SDL_Delay(5);
 		}
 	}
-
-	SDL_DestroyWindow(window);
 	SDL_Quit();
 	return 0;
 }
