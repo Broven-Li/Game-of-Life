@@ -80,9 +80,13 @@ void generation(board* current, board* next) {
 
 void Init() {
 
+    WIDTH = 800;
+    HEIGHT = 600;
+    CELLSIZE = 5;
     
-    int b_width = WIDTH / CELLSIZE;
-    int b_height = HEIGHT / CELLSIZE;
+    
+    b_width = WIDTH / CELLSIZE;
+    b_height = HEIGHT / CELLSIZE;
 
     SDL_Init(SDL_INIT_VIDEO);
     
@@ -92,28 +96,28 @@ void Init() {
         SDL_WINDOW_SHOWN);
 
     rend = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    SDL_SetRenderDrawColor(rend, 0, 0, 0, 0);
+    SDL_SetRenderDrawColor(rend, 255, 255, 255, 1);
     SDL_RenderClear(rend);
     SDL_RenderPresent(rend);
     
     current = createBoard(b_width, b_height);
     
-    //    //Blinker
-    //    (current->box)[10+1*b_width] = 1;
-    //    (current->box)[10+2*b_width] = 1;
-    //    (current->box)[10+3*b_width] = 1;
-    
-    //    (current->box)[10+20*b_width] = 1;
-    //    (current->box)[11+20*b_width] = 1;
-    //    (current->box)[12+20*b_width] = 1;
-    
-    //    //Toad
-    //    (current->box)[30+30*b_width] = 1;
-    //    (current->box)[31+30*b_width] = 1;
-    //    (current->box)[32+30*b_width] = 1;
-    //    (current->box)[29+31*b_width] = 1;
-    //    (current->box)[30+31*b_width] = 1;
-    //    (current->box)[31+31*b_width] = 1;
+    //  //Blinker
+    //  (current->box)[10+1*b_width] = 1;
+    //  (current->box)[10+2*b_width] = 1;
+    //  (current->box)[10+3*b_width] = 1;
+    //
+    //  (current->box)[10+20*b_width] = 1;
+    //  (current->box)[11+20*b_width] = 1;
+    //  (current->box)[12+20*b_width] = 1;
+    //
+    //   //Toad
+    //   (current->box)[30+30*b_width] = 1;
+    //   (current->box)[31+30*b_width] = 1;
+    //   (current->box)[32+30*b_width] = 1;
+    //   (current->box)[29+31*b_width] = 1;
+    //   (current->box)[30+31*b_width] = 1;
+    //   (current->box)[31+31*b_width] = 1;
     
     //    //Block
     //    (current->box)[1+1*b_width] = 1;
@@ -121,62 +125,61 @@ void Init() {
     //    (current->box)[2+1*b_width] = 1;
     //    (current->box)[2+2*b_width] = 1;
     
-        //Glider
-    //    (current->box)[30+20*b_width] = 1;
-    //    (current->box)[31+20*b_width] = 1;
-    //    (current->box)[32+20*b_width] = 1;
-    //    (current->box)[30+21*b_width] = 1;
-    //    (current->box)[31+22*b_width] = 1;
+       //Glider
+      //(current->box)[30+20*b_width] = 1;
+      //(current->box)[31+20*b_width] = 1;
+      //(current->box)[32+20*b_width] = 1;
+      //(current->box)[30+21*b_width] = 1;
+      //(current->box)[31+22*b_width] = 1;
     
     //Gosper glider gun
-    (current->box)[1 + 5 * b_width] = 1;
-    (current->box)[2 + 5 * b_width] = 1;
-    (current->box)[1 + 6 * b_width] = 1;
-    (current->box)[2 + 6 * b_width] = 1;
-    
-    (current->box)[35 + 3 * b_width] = 1;
-    (current->box)[36 + 3 * b_width] = 1;
-    (current->box)[35 + 4 * b_width] = 1;
-    (current->box)[36 + 4 * b_width] = 1;
-    
-    (current->box)[13 + 3 * b_width] = 1;
-    (current->box)[14 + 3 * b_width] = 1;
-    (current->box)[12 + 4 * b_width] = 1;
-    (current->box)[16 + 4 * b_width] = 1;
-    (current->box)[11 + 5 * b_width] = 1;
-    (current->box)[17 + 5 * b_width] = 1;
-    (current->box)[11 + 6 * b_width] = 1;
-    (current->box)[15 + 6 * b_width] = 1;
-    (current->box)[17 + 6 * b_width] = 1;
-    (current->box)[18 + 6 * b_width] = 1;
-    (current->box)[11 + 7 * b_width] = 1;
-    (current->box)[17 + 7 * b_width] = 1;
-    (current->box)[12 + 8 * b_width] = 1;
-    (current->box)[16 + 8 * b_width] = 1;
-    (current->box)[13 + 9 * b_width] = 1;
-    (current->box)[14 + 9 * b_width] = 1;
-    
-    (current->box)[21 + 3 * b_width] = 1;
-    (current->box)[22 + 3 * b_width] = 1;
-    (current->box)[21 + 4 * b_width] = 1;
-    (current->box)[22 + 4 * b_width] = 1;
-    (current->box)[21 + 5 * b_width] = 1;
-    (current->box)[22 + 5 * b_width] = 1;
-    (current->box)[23 + 2 * b_width] = 1;
-    (current->box)[23 + 6 * b_width] = 1;
-    (current->box)[25 + 2 * b_width] = 1;
-    (current->box)[25 + 6 * b_width] = 1;
-    (current->box)[25 + 1 * b_width] = 1;
-    (current->box)[25 + 7 * b_width] = 1;
+  //(current->box)[1 + 5 * b_width] = 1;
+  //(current->box)[2 + 5 * b_width] = 1;
+  //(current->box)[1 + 6 * b_width] = 1;
+  //(current->box)[2 + 6 * b_width] = 1;
+  //
+  //(current->box)[35 + 3 * b_width] = 1;
+  //(current->box)[36 + 3 * b_width] = 1;
+  //(current->box)[35 + 4 * b_width] = 1;
+  //(current->box)[36 + 4 * b_width] = 1;
+  //
+  //(current->box)[13 + 3 * b_width] = 1;
+  //(current->box)[14 + 3 * b_width] = 1;
+  //(current->box)[12 + 4 * b_width] = 1;
+  //(current->box)[16 + 4 * b_width] = 1;
+  //(current->box)[11 + 5 * b_width] = 1;
+  //(current->box)[17 + 5 * b_width] = 1;
+  //(current->box)[11 + 6 * b_width] = 1;
+  //(current->box)[15 + 6 * b_width] = 1;
+  //(current->box)[17 + 6 * b_width] = 1;
+  //(current->box)[18 + 6 * b_width] = 1;
+  //(current->box)[11 + 7 * b_width] = 1;
+  //(current->box)[17 + 7 * b_width] = 1;
+  //(current->box)[12 + 8 * b_width] = 1;
+  //(current->box)[16 + 8 * b_width] = 1;
+  //(current->box)[13 + 9 * b_width] = 1;
+  //(current->box)[14 + 9 * b_width] = 1;
+  //
+  //(current->box)[21 + 3 * b_width] = 1;
+  //(current->box)[22 + 3 * b_width] = 1;
+  //(current->box)[21 + 4 * b_width] = 1;
+  //(current->box)[22 + 4 * b_width] = 1;
+  //(current->box)[21 + 5 * b_width] = 1;
+  //(current->box)[22 + 5 * b_width] = 1;
+  //(current->box)[23 + 2 * b_width] = 1;
+  //(current->box)[23 + 6 * b_width] = 1;
+  //(current->box)[25 + 2 * b_width] = 1;
+  //(current->box)[25 + 6 * b_width] = 1;
+  //(current->box)[25 + 1 * b_width] = 1;
+  //(current->box)[25 + 7 * b_width] = 1;
     
     next = createBoard(b_width, b_height);
 }
 
 void display() {
     int i, j;
-    int Y, X;
 
-    SDL_SetRenderDrawColor(rend, 0, 0, 0, 1);
+    SDL_SetRenderDrawColor(rend, 255, 255, 255, 1);
     SDL_RenderClear(rend);
 
     for (i = 0; i < current->width; i++) {
@@ -185,13 +188,58 @@ void display() {
             SDL_Rect rect = { i * CELLSIZE, j * CELLSIZE, CELLSIZE, CELLSIZE };
 
             if ((current->box)[i + j * current->width] == 1) {
-                SDL_SetRenderDrawColor(rend, 0, 0, 0, 1);
+                SDL_SetRenderDrawColor(rend, 255, 255, 255, 1);
             }
             else if ((current->box)[i + j * current->width] == 0) {
-                SDL_SetRenderDrawColor(rend, 255, 255, 255, 1);
+                SDL_SetRenderDrawColor(rend, 0, 0, 0, 1);
             }
             SDL_RenderFillRect(rend, &rect);
         }
     }
     SDL_RenderPresent(rend);
+}
+
+void save() {
+    FILE* fp;
+    FILE* fpin;
+    FILE* fpout;
+    static char c;
+
+    fp = fopen("savearray.txt", "w");
+
+    for (int i = 0; i < (current->height * current->width); i++) {
+        fprintf(fp, "%d", (current->box)[i]);
+    }
+    fclose(fp);
+
+    fpin = fopen("init.txt", "r");
+    fpout = fopen("saveinit.txt", "w");
+
+    while ((c == fgetc(fpin)) != EOF) {
+        fputc(c, fpout);
+    }
+    fclose(fpin);
+    fclose(fpout);
+    return;
+}
+
+void loadInit(FILE* file) {
+    FILE* fp;
+    fp = fopen(file, "r");
+    fscanf(fp, "WORD_WIDTH %d", &WIDTH);
+    fscanf(fp, "WORD_HEIGHT %d", &HEIGHT);
+    fscanf(fp, "CELLSIZE %d", &CELLSIZE);
+    fclose(fp);
+    return;
+}
+
+void loadArray() {
+    FILE* fp;
+    fp = fopen("savearray.txt", "r");
+
+    for (int i = 0; i < (current->height * current->width); i++) {
+        fscanf(fp, "%d", &(current->box)[i]);
+    }
+    fclose(fp);
+    return;
 }

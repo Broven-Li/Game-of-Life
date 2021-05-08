@@ -2,10 +2,10 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#define WIDTH 800
-#define HEIGHT 600
-#define CELLSIZE 3
-#define DTIME 1.0/10.0
+int WIDTH;
+int HEIGHT;
+int CELLSIZE;
+
 
 typedef struct board {
     char* box;
@@ -28,5 +28,13 @@ board* createBoard(int w, int h);
 int checkNeighbors(board* b, int x, int y);
 
 void generation(board* current, board* next);
+
+void Init();
+
+void save();
+
+void loadInit();
+
+void loadArray();
 
 #endif

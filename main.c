@@ -1,14 +1,11 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include "SDL.h"
 #include "stdio.h"
-#include "stdbool.h"
+#include <stdbool.h>
 #include "math.h"
 #include "board.h"
 
 
-#define WIDTH 800
-#define HEIGHT 600
-#define CELLSIZE 2
 
 int main(int argc, char* argv[]) {
 
@@ -18,16 +15,19 @@ int main(int argc, char* argv[]) {
 	bool quit = false;
 	int start = 1;
 
+
 	while (quit == false) {
 		while (SDL_PollEvent(&event)) {
 			if (event.type == SDL_QUIT) {
+				save();
 				quit = true;
 			}
 			else if (event.type == SDL_KEYDOWN) {
 				if (event.key.keysym.sym == SDLK_ESCAPE) {
+					save();
 					quit = true;
 				}
-				else if (event.key.keysym.sym == SDLK_SPACE) {
+				if (event.key.keysym.sym == SDLK_SPACE) {
 					if (!start) {
 						start = 1;
 					}
@@ -35,28 +35,34 @@ int main(int argc, char* argv[]) {
 						start = 0;
 					}
 				}
+				if (event.key.keysym.sym == SDLK_l) {
+					
+					loadArray();
+				}
 			}
 			else if (event.type == SDL_MOUSEBUTTONDOWN) {
-				if (event.button.button == SDL_BUTTON_LEFT) {
+				int x, y;
+				extern int b_width;
+				b_width = WIDTH / CELLSIZE;
+				SDL_GetMouseState(&x, &y);
+				int gridX, gridY;
+				gridX = x / CELLSIZE;
+				gridY = y / CELLSIZE;
 
+				if (event.button.button == SDL_BUTTON_LEFT) {
+					(current->box)[gridX + gridY * b_width] = 1;
 				}
 				if (event.button.button == SDL_BUTTON_RIGHT) {
-
+					(current->box)[gridX + gridY * b_width] = 0;
 
 				}
 			}
-
-			if (start) {
-				newTime = SDL_GetTicks();
-				deltaTime = (double)(newTime - lastTime) / 1000;
-				if (deltaTime >= DTIME) {
-					generation(current, next);
-					lastTime = newTime;
-				}
-				display();
-			}
-			SDL_Delay(5);
 		}
+		if (start) {
+			generation(current, next);
+			display();
+		}
+		SDL_Delay(50);
 	}
 	SDL_Quit();
 	return 0;
